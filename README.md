@@ -40,3 +40,7 @@ npm test
 ## 写文章
 
 后台「新篇」使用 Markdown。也可以直接在 `content/posts` 增加 `.md`，在文首写标题、日期、分类、标签和 `published`。友链写在 `content/links.json`。
+
+## GitHub Pages
+
+仓库根目录的 `index.html` 供 [qzpzd.github.io/sumo](https://qzpzd.github.io/sumo/) 静态访问（Actions 会部署整仓）。同时保留了 `.nojekyll`、`about.html` 与 `posts/*.html`。本地完整功能仍用 `npm run dev` / `npm start`。

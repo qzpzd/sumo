@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>代码里的墨色 · 素墨</title>
+    <link rel="icon" href="../app/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static-pages.css" />
+  </head>
+  <body>
+    <header class="site">
+      <div class="bar">
+        <a class="brand" href="../index.html">
+          <span class="seal" aria-hidden="true">墨</span>
+          <span class="brand-name">素墨</span>
+        </a>
+        <nav>
+          <a href="../index.html">首页</a>
+          <a href="../index.html#posts">文录</a>
+          <a href="../about.html">关于</a>
+        </nav>
+      </div>
+    </header>
+    <main class="wrap article-page">
+      <p class="kicker">技术</p>
+      <h1>代码里的墨色</h1>
+      <p class="lead"><time datetime="2026-08-02">2026年8月2日</time> · 代码 · 水墨</p>
+      <div class="prose">
+        <p>写程序久了，会把页面也看成纸。背景是纸色，文字是墨，提醒用一点朱砂就够，再多就喧宾夺主。</p>
+        <h2>名字要像落款</h2>
+        <p>一个函数的名字应当让人知道它做什么，而不是它曾经打算做什么。短，并且落在实处。</p>
+        <pre><code>export function leaveBlank(lines: string[]) {
+  return lines.map((line) => line.trim()).filter(Boolean);
+}</code></pre>
+        <p><code>leaveBlank</code> 只做一件事：去掉空行。它不排序，不翻译，也不顺便发通知。</p>
+        <h2>改动要能单独看懂</h2>
+        <p>
+          提交之前看一遍差异，像退远了看一幅画。若某一块墨色太重，多半是这个改动里塞进了第二件事。拆开，各自落款。
+        </p>
+        <blockquote>
+          <p>能单独阅读的改动，以后也能单独撤回。</p>
+        </blockquote>
+      </div>
+      <p class="back"><a href="../index.html">← 回首页</a></p>
+    </main>
+  </body>
+</html>

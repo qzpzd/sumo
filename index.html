@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>素墨 · 极简水墨博客</title>
+    <meta name="description" content="墨淡情浓，字少意长。把日子写成短章，把留白留给风。" />
+    <link rel="icon" href="./app/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f3efe6;
+        --ink: #1c1915;
+        --ink-soft: #3f3a33;
+        --mist: #8a8478;
+        --cinnabar: #8e2f2f;
+        --line: #d8d0c3;
+        --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", serif;
+        --brush: "Ma Shan Zheng", "KaiTi", "STKaiti", "FangSong", cursive;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        font-family: var(--serif);
+        line-height: 1.8;
+        background:
+          radial-gradient(ellipse 70% 45% at 0% -10%, rgba(28, 25, 21, 0.06), transparent 55%),
+          radial-gradient(ellipse 50% 40% at 100% 0%, rgba(142, 47, 47, 0.06), transparent 50%),
+          radial-gradient(ellipse 45% 35% at 80% 110%, rgba(28, 25, 21, 0.05), transparent 50%),
+          var(--paper);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        text-underline-offset: 0.18em;
+      }
+
+      a:hover {
+        color: var(--cinnabar);
+      }
+
+      .wrap {
+        width: min(100% - 2.5rem, 68rem);
+        margin-inline: auto;
+      }
+
+      header.site {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .seal {
+        display: inline-flex;
+        width: 2.25rem;
+        height: 2.25rem;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--cinnabar);
+        color: var(--cinnabar);
+        transform: rotate(-8deg);
+      }
+
+      .brand-name {
+        font-family: var(--brush);
+        font-size: 2.2rem;
+        line-height: 1;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.1rem;
+        font-size: 0.9rem;
+        letter-spacing: 0.18em;
+        color: var(--ink-soft);
+      }
+
+      .hero {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-grid {
+        display: grid;
+        gap: 1.5rem;
+        padding: 4rem 0;
+        align-items: end;
+      }
+
+      @media (min-width: 800px) {
+        .hero-grid {
+          grid-template-columns: 1.15fr 0.85fr;
+          padding: 5.5rem 0;
+        }
+      }
+
+      .eyebrow {
+        margin: 1.4rem 0 0;
+        font-size: 0.75rem;
+        letter-spacing: 0.42em;
+        color: var(--mist);
+      }
+
+      h1 {
+        margin: 0.6rem 0 0;
+        font-family: var(--brush);
+        font-size: clamp(4rem, 10vw, 5.5rem);
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .lead {
+        max-width: 36rem;
+        margin: 1.4rem 0 0;
+        font-size: 1.1rem;
+        line-height: 1.9;
+        color: var(--ink-soft);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.8rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.5rem;
+        padding: 0.35rem 1rem;
+        border: 1px solid var(--ink);
+        letter-spacing: 0.08em;
+      }
+
+      .btn:hover {
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .btn-seal {
+        border-color: var(--cinnabar);
+        background: var(--cinnabar);
+        color: #f7f3ec;
+      }
+
+      .btn-seal:hover {
+        background: #742626;
+        color: #f7f3ec;
+      }
+
+      .inkscape {
+        width: 100%;
+        height: auto;
+        color: var(--ink);
+      }
+
+      .section {
+        padding: 3rem 0 4rem;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-family: var(--brush);
+        font-size: 2.4rem;
+        font-weight: 400;
+      }
+
+      .meta {
+        color: var(--mist);
+        font-size: 0.9rem;
+      }
+
+      article.post {
+        border-bottom: 1px solid var(--line);
+        padding: 1.8rem 0;
+      }
+
+      .post-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .post-top time {
+        letter-spacing: 0.14em;
+        color: var(--mist);
+      }
+
+      .post-top .cat {
+        color: var(--cinnabar);
+      }
+
+      .post h3 {
+        margin: 0.7rem 0 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+
+      .excerpt {
+        margin: 0.7rem 0 0;
+        max-width: 48rem;
+        line-height: 1.9;
+        color: var(--ink-soft);
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem 1rem;
+        margin-top: 0.9rem;
+        font-size: 0.9rem;
+        color: var(--mist);
+      }
+
+      .cats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-top: 2rem;
+      }
+
+      .chip {
+        border: 1px solid var(--line);
+        padding: 0.25rem 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .chip span {
+        margin-left: 0.45rem;
+        color: var(--mist);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        margin-top: 1rem;
+      }
+
+      .foot {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 2rem 0;
+        font-size: 0.9rem;
+        color: var(--mist);
+      }
+
+      .foot a:hover {
+        color: var(--ink);
+      }
+
+      .note {
+        margin-top: 1.5rem;
+        font-size: 0.85rem;
+        color: var(--mist);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap bar">
+        <a class="brand" href="./index.html">
+          <span class="seal" aria-hidden="true">墨</span>
+          <span class="brand-name">素墨</span>
+        </a>
+        <nav>
+          <a href="./index.html">首页</a>
+          <a href="#posts">文录</a>
+          <a href="./about.html">关于</a>
+          <a href="./content/links.json">墨缘</a>
+          <a href="https://github.com/qzpzd/sumo">源码</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <span class="seal" aria-hidden="true">墨</span>
+            <p class="eyebrow">INK AND PAPER</p>
+            <h1>素墨</h1>
+            <p class="lead">墨淡情浓，字少意长。把日子写成短章，把留白留给风。</p>
+            <div class="actions">
+              <a class="btn" href="#posts">读文录</a>
+              <a class="btn btn-seal" href="./about.html">关于</a>
+            </div>
+          </div>
+          <svg class="inkscape" viewBox="0 0 640 280" aria-hidden="true">
+            <path
+              d="M0 210 C90 190 130 120 190 132 C250 144 270 78 340 92 C410 106 430 150 500 138 C560 128 590 96 640 110 L640 280 L0 280 Z"
+              fill="currentColor"
+              opacity="0.08"
+            />
+            <path
+              d="M0 236 C120 200 170 168 250 184 C340 202 360 150 450 166 C530 180 580 214 640 196 L640 280 L0 280 Z"
+              fill="currentColor"
+              opacity="0.16"
+            />
+            <path
+              d="M78 250 C92 190 108 132 124 128 C142 124 150 176 168 214"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              opacity="0.45"
+            />
+            <path d="M118 146 C140 110 168 96 176 132" fill="none" stroke="currentColor" stroke-width="2" opacity="0.28" />
+            <path d="M430 168 C470 120 520 108 548 150" fill="none" stroke="currentColor" stroke-width="8" opacity="0.08" />
+          </svg>
+        </div>
+      </section>
+
+      <section class="section wrap" id="posts">
+        <div class="section-head">
+          <h2>近作</h2>
+          <p class="meta">5 篇 · GitHub Pages 静态页</p>
+        </div>
+
+        <article class="post">
+          <div class="post-top">
+            <time datetime="2026-09-29">2026年9月29日</time>
+            <span class="cat">随笔</span>
+          </div>
+          <h3><a href="./posts/yu-hou-zhu.html">雨后的竹</a></h3>
+          <p class="excerpt">雨停之后，竹叶上的水还没有落。那一点光，比雨本身更值得记。</p>
+          <div class="tags"><span>#竹</span><span>#雨</span></div>
+        </article>
+
+        <article class="post">
+          <div class="post-top">
+            <time datetime="2026-08-02">2026年8月2日</time>
+            <span class="cat">技术</span>
+          </div>
+          <h3><a href="./posts/mo-se-dai-ma.html">代码里的墨色</a></h3>
+          <p class="excerpt">函数写清楚，比注释写得多更接近一幅完成的画。</p>
+          <div class="tags"><span>#代码</span><span>#水墨</span></div>
+        </article>
+
+        <article class="post">
+          <div class="post-top">
+            <time datetime="2026-06-18">2026年6月18日</time>
+            <span class="cat">生活</span>
+          </div>
+          <h3><a href="./posts/yi-zhan-cha.html">一盏茶的时间</a></h3>
+          <p class="excerpt">水开了，叶子慢慢展开。这段时间刚好够把一句想说的话想完。</p>
+          <div class="tags"><span>#茶</span><span>#日常</span></div>
+        </article>
+
+        <article class="post">
+          <div class="post-top">
+            <time datetime="2026-03-12">2026年3月12日</time>
+            <span class="cat">随笔</span>
+          </div>
+          <h3><a href="./posts/liu-bai.html">纸上的留白</a></h3>
+          <p class="excerpt">一幅画最贵的地方，常常是没有下笔的地方。写文章也是。</p>
+          <div class="tags"><span>#水墨</span><span>#留白</span></div>
+        </article>
+
+        <article class="post">
+          <div class="post-top">
+            <time datetime="2025-12-21">2025年12月21日</time>
+            <span class="cat">阅读</span>
+          </div>
+          <h3><a href="./posts/dong-ri-shu.html">冬日的书</a></h3>
+          <p class="excerpt">天短的时候，一本书只要读到一个清楚的句子，这一天就算没有白过。</p>
+          <div class="tags"><span>#阅读</span><span>#日常</span></div>
+        </article>
+
+        <div class="cats">
+          <span class="chip">随笔<span>2</span></span>
+          <span class="chip">技术<span>1</span></span>
+          <span class="chip">生活<span>1</span></span>
+          <span class="chip">阅读<span>1</span></span>
+        </div>
+
+        <p class="note">
+          本页供
+          <a href="https://qzpzd.github.io/sumo/">qzpzd.github.io/sumo</a>
+          静态访问。完整后台、评论与企业微信推送请在本地运行 Next 服务。
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap foot">
+        <p>© 2026 素墨 · 纸上留白</p>
+        <div>
+          <a href="./about.html">关于</a>
+          ·
+          <a href="https://github.com/qzpzd/sumo">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
