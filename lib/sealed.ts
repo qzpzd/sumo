@@ -1,0 +1,3 @@
+/** AES-256-GCM ciphertext. Decrypt with SEAL_KEY. */
+export const SEALED_WEBHOOK = "K4rrAUyj0kXmFdhoV3ERLph0wVkZrEyb164I73YDOKQYvqanfpCK8YjkIrA8a7r4hcs8insVGYJlGM-HeR07f8kp0iv4jC7qV8nNdOI0xwlweJ0xlG3rEv3YUKW6iVL9cSmm9lXNVyWX5qi4NTfkF72SCJnT";
+export const SEALED_ADMIN_PASSWORD = "38exRQTrFDX1MGy-zqQXBR_JN5I2F_7qzbW-KRjBoWla";
