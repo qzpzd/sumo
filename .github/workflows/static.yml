@@ -33,10 +33,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          # 若仓库尚未创建 Pages 站点，由 Actions 自动启用并以 GitHub Actions 为构建来源
+          enablement: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # 仅上传静态站点入口，避免把 node_modules / .next 等一并部署
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
