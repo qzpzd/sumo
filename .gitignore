@@ -1,6 +1,9 @@
 node_modules
 .next
+.next-live
+.next-pages
 out
+.pages-stash
 .vercel
 *.log
 .env

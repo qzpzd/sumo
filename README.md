@@ -43,4 +43,4 @@ npm test
 
 ## GitHub Pages
 
-仓库根目录的 `index.html` 供 [qzpzd.github.io/sumo](https://qzpzd.github.io/sumo/) 静态访问（Actions 会部署整仓）。同时保留了 `.nojekyll`、`about.html` 与 `posts/*.html`。本地完整功能仍用 `npm run dev` / `npm start`。
+[qzpzd.github.io/sumo](https://qzpzd.github.io/sumo/) 由 Actions 执行 `node scripts/export-pages.mjs`，把同一套 Next 页面导出后发布。本地 `npm run dev` / `npm start` 不受影响。评论、后台和定时推送需要服务器，静态站点上这些请求不会生效。

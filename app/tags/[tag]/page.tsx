@@ -7,6 +7,11 @@ import { notFound } from "next/navigation";
 
 type Props = { params: Promise<{ tag: string }> };
 
+export function generateStaticParams() {
+  const tags = new Set(getAllPosts().flatMap((post) => post.tags));
+  return [...tags].map((tag) => ({ tag }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tag } = await params;
   return { title: decodeURIComponent(tag) };

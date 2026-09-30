@@ -3,7 +3,7 @@ import { MarkdownBody } from "@/components/MarkdownBody";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { ViewCounter } from "@/components/ViewCounter";
 import { listComments } from "@/lib/comments";
-import { getPost, relatedPosts } from "@/lib/posts";
+import { getAllPosts, getPost, relatedPosts } from "@/lib/posts";
 import { site } from "@/lib/site";
 import { extractToc } from "@/lib/toc";
 import { formatDate } from "@/lib/time";
@@ -13,6 +13,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type Props = { params: Promise<{ slug: string }> };
+
+export function generateStaticParams() {
+  return getAllPosts().map((post) => ({ slug: post.slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
